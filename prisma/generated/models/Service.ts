@@ -69,6 +69,7 @@ export type ServiceCountAggregateOutputType = {
   description: number
   fullText: number
   image: number
+  features: number
   price: number
   order: number
   isActive: number
@@ -121,6 +122,7 @@ export type ServiceCountAggregateInputType = {
   description?: true
   fullText?: true
   image?: true
+  features?: true
   price?: true
   order?: true
   isActive?: true
@@ -222,6 +224,7 @@ export type ServiceGroupByOutputType = {
   description: string
   fullText: string
   image: string
+  features: string[]
   price: string | null
   order: number
   isActive: boolean
@@ -259,6 +262,7 @@ export type ServiceWhereInput = {
   description?: Prisma.StringFilter<"Service"> | string
   fullText?: Prisma.StringFilter<"Service"> | string
   image?: Prisma.StringFilter<"Service"> | string
+  features?: Prisma.StringNullableListFilter<"Service">
   price?: Prisma.StringNullableFilter<"Service"> | string | null
   order?: Prisma.IntFilter<"Service"> | number
   isActive?: Prisma.BoolFilter<"Service"> | boolean
@@ -273,6 +277,7 @@ export type ServiceOrderByWithRelationInput = {
   description?: Prisma.SortOrder
   fullText?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  features?: Prisma.SortOrder
   price?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -290,6 +295,7 @@ export type ServiceWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringFilter<"Service"> | string
   fullText?: Prisma.StringFilter<"Service"> | string
   image?: Prisma.StringFilter<"Service"> | string
+  features?: Prisma.StringNullableListFilter<"Service">
   price?: Prisma.StringNullableFilter<"Service"> | string | null
   order?: Prisma.IntFilter<"Service"> | number
   isActive?: Prisma.BoolFilter<"Service"> | boolean
@@ -304,6 +310,7 @@ export type ServiceOrderByWithAggregationInput = {
   description?: Prisma.SortOrder
   fullText?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  features?: Prisma.SortOrder
   price?: Prisma.SortOrderInput | Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -326,6 +333,7 @@ export type ServiceScalarWhereWithAggregatesInput = {
   description?: Prisma.StringWithAggregatesFilter<"Service"> | string
   fullText?: Prisma.StringWithAggregatesFilter<"Service"> | string
   image?: Prisma.StringWithAggregatesFilter<"Service"> | string
+  features?: Prisma.StringNullableListFilter<"Service">
   price?: Prisma.StringNullableWithAggregatesFilter<"Service"> | string | null
   order?: Prisma.IntWithAggregatesFilter<"Service"> | number
   isActive?: Prisma.BoolWithAggregatesFilter<"Service"> | boolean
@@ -340,6 +348,7 @@ export type ServiceCreateInput = {
   description: string
   fullText: string
   image: string
+  features?: Prisma.ServiceCreatefeaturesInput | string[]
   price?: string | null
   order?: number
   isActive?: boolean
@@ -354,6 +363,7 @@ export type ServiceUncheckedCreateInput = {
   description: string
   fullText: string
   image: string
+  features?: Prisma.ServiceCreatefeaturesInput | string[]
   price?: string | null
   order?: number
   isActive?: boolean
@@ -368,6 +378,7 @@ export type ServiceUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   fullText?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.StringFieldUpdateOperationsInput | string
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
   price?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -382,6 +393,7 @@ export type ServiceUncheckedUpdateInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   fullText?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.StringFieldUpdateOperationsInput | string
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
   price?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -396,6 +408,7 @@ export type ServiceCreateManyInput = {
   description: string
   fullText: string
   image: string
+  features?: Prisma.ServiceCreatefeaturesInput | string[]
   price?: string | null
   order?: number
   isActive?: boolean
@@ -410,6 +423,7 @@ export type ServiceUpdateManyMutationInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   fullText?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.StringFieldUpdateOperationsInput | string
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
   price?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
@@ -424,11 +438,20 @@ export type ServiceUncheckedUpdateManyInput = {
   description?: Prisma.StringFieldUpdateOperationsInput | string
   fullText?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.StringFieldUpdateOperationsInput | string
+  features?: Prisma.ServiceUpdatefeaturesInput | string[]
   price?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   order?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type StringNullableListFilter<$PrismaModel = never> = {
+  equals?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel> | null
+  has?: string | Prisma.StringFieldRefInput<$PrismaModel> | null
+  hasEvery?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  hasSome?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
+  isEmpty?: boolean
 }
 
 export type ServiceCountOrderByAggregateInput = {
@@ -438,6 +461,7 @@ export type ServiceCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   fullText?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  features?: Prisma.SortOrder
   price?: Prisma.SortOrder
   order?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
@@ -481,8 +505,17 @@ export type ServiceSumOrderByAggregateInput = {
   order?: Prisma.SortOrder
 }
 
+export type ServiceCreatefeaturesInput = {
+  set: string[]
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type ServiceUpdatefeaturesInput = {
+  set?: string[]
+  push?: string | string[]
 }
 
 export type NullableStringFieldUpdateOperationsInput = {
@@ -514,6 +547,7 @@ export type ServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   description?: boolean
   fullText?: boolean
   image?: boolean
+  features?: boolean
   price?: boolean
   order?: boolean
   isActive?: boolean
@@ -528,6 +562,7 @@ export type ServiceSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   description?: boolean
   fullText?: boolean
   image?: boolean
+  features?: boolean
   price?: boolean
   order?: boolean
   isActive?: boolean
@@ -542,6 +577,7 @@ export type ServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   description?: boolean
   fullText?: boolean
   image?: boolean
+  features?: boolean
   price?: boolean
   order?: boolean
   isActive?: boolean
@@ -556,6 +592,7 @@ export type ServiceSelectScalar = {
   description?: boolean
   fullText?: boolean
   image?: boolean
+  features?: boolean
   price?: boolean
   order?: boolean
   isActive?: boolean
@@ -563,7 +600,7 @@ export type ServiceSelectScalar = {
   updatedAt?: boolean
 }
 
-export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "description" | "fullText" | "image" | "price" | "order" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
+export type ServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "slug" | "title" | "description" | "fullText" | "image" | "features" | "price" | "order" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["service"]>
 
 export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Service"
@@ -575,6 +612,7 @@ export type $ServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     description: string
     fullText: string
     image: string
+    features: string[]
     price: string | null
     order: number
     isActive: boolean
@@ -1009,6 +1047,7 @@ export interface ServiceFieldRefs {
   readonly description: Prisma.FieldRef<"Service", 'String'>
   readonly fullText: Prisma.FieldRef<"Service", 'String'>
   readonly image: Prisma.FieldRef<"Service", 'String'>
+  readonly features: Prisma.FieldRef<"Service", 'String[]'>
   readonly price: Prisma.FieldRef<"Service", 'String'>
   readonly order: Prisma.FieldRef<"Service", 'Int'>
   readonly isActive: Prisma.FieldRef<"Service", 'Boolean'>

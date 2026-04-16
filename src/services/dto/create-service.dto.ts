@@ -1,4 +1,5 @@
 import {
+  IsArray,
   IsBoolean,
   IsInt,
   IsNotEmpty,
@@ -26,6 +27,11 @@ export class CreateServiceDto {
   @IsString()
   @IsNotEmpty({ message: 'Укажите изображение' })
   image: string;
+
+  @IsArray()
+  @IsString({ each: true })
+  @IsOptional()
+  features?: string[];
 
   @IsString()
   @IsOptional()
