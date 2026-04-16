@@ -1,0 +1,188 @@
+import { PrismaPg } from '@prisma/adapter-pg';
+import { PrismaClient } from './generated/client';
+import * as bcrypt from 'bcrypt';
+
+async function main() {
+  const adapter = new PrismaPg({
+    connectionString: 'postgresql://postgres:5429558@localhost:5432/ritualrpo',
+  });
+  const prisma = new PrismaClient({ adapter });
+
+  const adminPassword = await bcrypt.hash('admin123', 10);
+  await prisma.admin.upsert({
+    where: { email: 'admin@ritualrpo.ru' },
+    update: {},
+    create: {
+      email: 'admin@ritualrpo.ru',
+      password: adminPassword,
+      name: 'Администратор',
+    },
+  });
+  console.log('Админ создан');
+
+  const services = [
+    {
+      slug: 'organizaciya-pohoron',
+      title: 'Организация похорон',
+      description:
+        'Полный цикл организации — от оформления документов до проведения церемонии прощания.',
+      fullText:
+        'Мы берём на себя все этапы организации похорон: оформление необходимых документов, подготовка и проведение церемонии прощания, транспортировка, координация с кладбищем и моргом. Вы можете сосредоточиться на близких — всё остальное сделаем мы.',
+      image: '/images/services/funeral.jpg',
+      order: 1,
+    },
+    {
+      slug: 'kremaciya',
+      title: 'Кремация',
+      description:
+        'Организация кремации с соблюдением всех традиций и пожеланий семьи.',
+      fullText:
+        'Организуем кремацию в крематориях Санкт-Петербурга с полным сопровождением. Помогаем с выбором урны, проведением церемонии прощания перед кремацией и оформлением всех необходимых документов.',
+      image: '/images/services/cremation.jpg',
+      order: 2,
+    },
+    {
+      slug: 'ritualnye-tovary',
+      title: 'Ритуальные товары',
+      description:
+        'Гробы, венки, цветы, траурные ленты и другие ритуальные принадлежности.',
+      fullText:
+        'Предлагаем широкий выбор ритуальных товаров: гробы из разных материалов, венки и корзины из живых и искусственных цветов, траурные ленты, покрывала и другие принадлежности. Поможем подобрать всё необходимое.',
+      image: '/images/services/products.png',
+      order: 3,
+    },
+    {
+      slug: 'pamyatniki',
+      title: 'Памятники и благоустройство',
+      description:
+        'Изготовление памятников, оград, благоустройство и уход за захоронениями.',
+      fullText:
+        'Изготавливаем памятники из гранита и мрамора по индивидуальным и типовым проектам. Выполняем благоустройство захоронений: установка оград, укладка плитки, озеленение. Предлагаем услуги по уходу за могилами.',
+      image: '/images/services/monuments.jpg',
+      order: 4,
+    },
+  ];
+
+  for (const service of services) {
+    await prisma.service.upsert({
+      where: { slug: service.slug },
+      update: service,
+      create: service,
+    });
+  }
+  console.log('Услуги созданы:', services.length);
+
+  const categories = [
+    { slug: 'groby', name: 'Гробы', order: 1 },
+    { slug: 'venki', name: 'Венки', order: 2 },
+    { slug: 'tsvety', name: 'Цветы', order: 3 },
+    { slug: 'pamyatniki', name: 'Памятники', order: 4 },
+  ];
+
+  for (const category of categories) {
+    await prisma.category.upsert({
+      where: { slug: category.slug },
+      update: category,
+      create: category,
+    });
+  }
+  console.log('Категории созданы:', categories.length);
+
+  const grobyCategory = await prisma.category.findUnique({
+    where: { slug: 'groby' },
+  });
+  const venkiCategory = await prisma.category.findUnique({
+    where: { slug: 'venki' },
+  });
+  const tsvetyCategory = await prisma.category.findUnique({
+    where: { slug: 'tsvety' },
+  });
+  const pamyatnikiCategory = await prisma.category.findUnique({
+    where: { slug: 'pamyatniki' },
+  });
+
+  const products = [
+    {
+      slug: 'grob-sosna-standart',
+      name: 'Гроб сосна «Стандарт»',
+      description:
+        'Гроб из массива сосны с тканевой обивкой. Классическая форма.',
+      price: 12000,
+      image: '/images/products/grob-1.png',
+      categoryId: grobyCategory!.id,
+    },
+    {
+      slug: 'grob-dub-premium',
+      name: 'Гроб дуб «Премиум»',
+      description:
+        'Гроб из массива дуба с лакированным покрытием и резным декором.',
+      price: 45000,
+      image: '/images/products/grob-2.png',
+      categoryId: grobyCategory!.id,
+    },
+    {
+      slug: 'venok-iz-zhivyh-roz',
+      name: 'Венок из живых роз',
+      description: 'Траурный венок из свежих роз с атласной лентой.',
+      price: 8500,
+      image: '/images/products/venok-1.png',
+      categoryId: venkiCategory!.id,
+    },
+    {
+      slug: 'venok-iskusstvennyy',
+      name: 'Венок искусственный',
+      description:
+        'Венок из искусственных цветов. Долговечный, подходит для установки на могилу.',
+      price: 3500,
+      image: '/images/products/venok-2.png',
+      categoryId: venkiCategory!.id,
+    },
+    {
+      slug: 'bukety-zhivye-lilii',
+      name: 'Букет живых лилий',
+      description: 'Траурный букет из белых лилий.',
+      price: 4500,
+      image: '/images/products/tsvety-1.png',
+      categoryId: tsvetyCategory!.id,
+    },
+    {
+      slug: 'korzina-iz-hrizantem',
+      name: 'Корзина из хризантем',
+      description: 'Корзина из белых хризантем с зеленью.',
+      price: 6000,
+      image: '/images/products/tsvety-2.png',
+      categoryId: tsvetyCategory!.id,
+    },
+    {
+      slug: 'pamyatnik-granit-vertikalnyy',
+      name: 'Памятник гранит вертикальный',
+      description:
+        'Памятник из чёрного гранита. Вертикальная стела с гравировкой.',
+      price: 35000,
+      image: '/images/products/pamyatnik-1.png',
+      categoryId: pamyatnikiCategory!.id,
+    },
+    {
+      slug: 'pamyatnik-mramor-krest',
+      name: 'Памятник мрамор с крестом',
+      description: 'Памятник из белого мрамора с резным крестом.',
+      price: 55000,
+      image: '/images/products/pamyatnik-2.png',
+      categoryId: pamyatnikiCategory!.id,
+    },
+  ];
+
+  for (const product of products) {
+    await prisma.product.upsert({
+      where: { slug: product.slug },
+      update: product,
+      create: product,
+    });
+  }
+  console.log('Товары созданы:', products.length);
+
+  await prisma.$disconnect();
+  console.log('Seed завершён!');
+}
+
+main();
