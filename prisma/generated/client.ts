@@ -64,3 +64,8 @@ export type Request = Prisma.RequestModel
  * 
  */
 export type Admin = Prisma.AdminModel
+/**
+ * Model Review
+ * 
+ */
+export type Review = Prisma.ReviewModel

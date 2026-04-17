@@ -72,3 +72,14 @@ model Admin {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// Отзывы клиентов
+model Review {
+  id         String   @id @default(uuid())
+  name       String
+  rating     Int
+  text       String   @db.Text
+  isApproved Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

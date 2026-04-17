@@ -212,6 +212,35 @@ async function main() {
   }
   console.log('Товары созданы:', products.length);
 
+  const reviewsCount = await prisma.review.count();
+  if (reviewsCount === 0) {
+    await prisma.review.createMany({
+      data: [
+        {
+          name: 'Елена М.',
+          rating: 5,
+          text: 'В самый тяжёлый момент они взяли всё на себя. Мы могли просто быть рядом с семьёй, не думая об организации.',
+          isApproved: true,
+        },
+        {
+          name: 'Андрей К.',
+          rating: 5,
+          text: 'Очень деликатное и профессиональное отношение. Всё было организовано достойно, именно так, как мы хотели.',
+          isApproved: true,
+        },
+        {
+          name: 'Ольга С.',
+          rating: 5,
+          text: 'Благодарим за круглосуточную поддержку. Позвонили ночью — приехали через 40 минут. Помогли с документами и всей организацией.',
+          isApproved: true,
+        },
+      ],
+    });
+    console.log('Отзывы созданы: 3');
+  } else {
+    console.log('Отзывы уже есть, пропуск:', reviewsCount);
+  }
+
   await prisma.$disconnect();
   console.log('Seed завершён!');
 }

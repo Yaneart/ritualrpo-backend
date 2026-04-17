@@ -8,6 +8,7 @@ import { RequestsModule } from './requests/requests.module';
 import { CategoriesModule } from './categories/categories.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { ReviewsModule } from './reviews/reviews.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ConfigModule } from '@nestjs/config';
     RequestsModule,
     CategoriesModule,
     AuthModule,
+    ReviewsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
