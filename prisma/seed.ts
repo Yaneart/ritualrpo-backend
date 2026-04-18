@@ -1,5 +1,5 @@
 import { PrismaPg } from '@prisma/adapter-pg';
-import { PrismaClient } from './generated/client';
+import { CalculatorGroupType, PrismaClient } from './generated/client';
 import * as bcrypt from 'bcrypt';
 
 async function main() {
@@ -281,6 +281,252 @@ async function main() {
   } else {
     console.log('FAQ уже есть, пропуск:', faqCount);
   }
+
+  const calculatorServiceTypes = [
+    {
+      slug: 'funeral',
+      title: 'Организация похорон',
+      description: 'Полный цикл — документы, церемония, транспортировка',
+      basePrice: 25000,
+      order: 1,
+    },
+    {
+      slug: 'cremation',
+      title: 'Кремация',
+      description: 'Кремация с церемонией прощания и оформлением',
+      basePrice: 20000,
+      order: 2,
+    },
+  ];
+
+  for (const serviceType of calculatorServiceTypes) {
+    await prisma.calculatorServiceType.upsert({
+      where: { slug: serviceType.slug },
+      update: serviceType,
+      create: serviceType,
+    });
+  }
+  console.log(
+    'Типы услуг калькулятора созданы:',
+    calculatorServiceTypes.length,
+  );
+
+  const calculatorGroups = [
+    {
+      slug: 'coffin',
+      title: 'Гроб',
+      type: CalculatorGroupType.required,
+      order: 1,
+    },
+    {
+      slug: 'transport',
+      title: 'Транспорт',
+      type: CalculatorGroupType.required,
+      order: 2,
+    },
+    {
+      slug: 'farewell',
+      title: 'Зал прощания',
+      type: CalculatorGroupType.required,
+      order: 3,
+    },
+    {
+      slug: 'flowers',
+      title: 'Венки и цветы',
+      type: CalculatorGroupType.extra,
+      order: 1,
+    },
+    {
+      slug: 'ceremony',
+      title: 'Церемония',
+      type: CalculatorGroupType.extra,
+      order: 2,
+    },
+    {
+      slug: 'other',
+      title: 'Прочее',
+      type: CalculatorGroupType.extra,
+      order: 3,
+    },
+  ];
+
+  for (const group of calculatorGroups) {
+    await prisma.calculatorGroup.upsert({
+      where: { slug: group.slug },
+      update: group,
+      create: group,
+    });
+  }
+  console.log('Группы калькулятора созданы:', calculatorGroups.length);
+
+  const coffinGroup = await prisma.calculatorGroup.findUnique({
+    where: { slug: 'coffin' },
+  });
+  const transportGroup = await prisma.calculatorGroup.findUnique({
+    where: { slug: 'transport' },
+  });
+  const farewellGroup = await prisma.calculatorGroup.findUnique({
+    where: { slug: 'farewell' },
+  });
+  const flowersGroup = await prisma.calculatorGroup.findUnique({
+    where: { slug: 'flowers' },
+  });
+  const ceremonyGroup = await prisma.calculatorGroup.findUnique({
+    where: { slug: 'ceremony' },
+  });
+  const otherGroup = await prisma.calculatorGroup.findUnique({
+    where: { slug: 'other' },
+  });
+
+  const calculatorOptions = [
+    {
+      slug: 'coffin-economy',
+      title: 'Гроб «Эконом» (ДСП)',
+      price: 6000,
+      order: 1,
+      groupId: coffinGroup!.id,
+    },
+    {
+      slug: 'coffin-standard',
+      title: 'Гроб «Стандарт» (сосна)',
+      price: 12000,
+      order: 2,
+      groupId: coffinGroup!.id,
+    },
+    {
+      slug: 'coffin-premium',
+      title: 'Гроб «Премиум» (дуб)',
+      price: 45000,
+      order: 3,
+      groupId: coffinGroup!.id,
+    },
+    {
+      slug: 'coffin-elite',
+      title: 'Гроб «Элитный» (лакированный дуб)',
+      price: 80000,
+      order: 4,
+      groupId: coffinGroup!.id,
+    },
+
+    {
+      slug: 'transport-standard',
+      title: 'Катафалк (ГАЗель)',
+      price: 5000,
+      order: 1,
+      groupId: transportGroup!.id,
+    },
+    {
+      slug: 'transport-comfort',
+      title: 'Катафалк (Mercedes)',
+      price: 12000,
+      order: 2,
+      groupId: transportGroup!.id,
+    },
+
+    {
+      slug: 'farewell-basic',
+      title: 'Зал стандарт (1 час)',
+      price: 5000,
+      order: 1,
+      groupId: farewellGroup!.id,
+    },
+    {
+      slug: 'farewell-extended',
+      title: 'Зал расширенный (2 часа)',
+      price: 9000,
+      order: 2,
+      groupId: farewellGroup!.id,
+    },
+    {
+      slug: 'farewell-vip',
+      title: 'VIP-зал (3 часа)',
+      price: 18000,
+      order: 3,
+      groupId: farewellGroup!.id,
+    },
+
+    {
+      slug: 'wreath-fresh',
+      title: 'Венок из живых роз',
+      price: 8500,
+      order: 1,
+      groupId: flowersGroup!.id,
+    },
+    {
+      slug: 'wreath-artificial',
+      title: 'Венок искусственный',
+      price: 3500,
+      order: 2,
+      groupId: flowersGroup!.id,
+    },
+    {
+      slug: 'flowers-lilies',
+      title: 'Букет живых лилий',
+      price: 4500,
+      order: 3,
+      groupId: flowersGroup!.id,
+    },
+    {
+      slug: 'flowers-basket',
+      title: 'Корзина из хризантем',
+      price: 6000,
+      order: 4,
+      groupId: flowersGroup!.id,
+    },
+
+    {
+      slug: 'photo-video',
+      title: 'Фото/видеосъёмка',
+      price: 7000,
+      order: 1,
+      groupId: ceremonyGroup!.id,
+    },
+    {
+      slug: 'music',
+      title: 'Музыкальное сопровождение',
+      price: 5000,
+      order: 2,
+      groupId: ceremonyGroup!.id,
+    },
+    {
+      slug: 'memorial-dinner',
+      title: 'Поминальный обед (10 чел.)',
+      price: 15000,
+      order: 3,
+      groupId: ceremonyGroup!.id,
+    },
+
+    {
+      slug: 'documents',
+      title: 'Оформление документов',
+      price: 3000,
+      order: 1,
+      groupId: otherGroup!.id,
+    },
+    {
+      slug: 'clothing',
+      title: 'Комплект траурной одежды',
+      price: 8000,
+      order: 2,
+      groupId: otherGroup!.id,
+    },
+    {
+      slug: 'grave-care',
+      title: 'Уход за захоронением (1 год)',
+      price: 12000,
+      order: 3,
+      groupId: otherGroup!.id,
+    },
+  ];
+
+  for (const option of calculatorOptions) {
+    await prisma.calculatorOption.upsert({
+      where: { slug: option.slug },
+      update: option,
+      create: option,
+    });
+  }
+  console.log('Опции калькулятора созданы:', calculatorOptions.length);
 
   await prisma.$disconnect();
   console.log('Seed завершён!');

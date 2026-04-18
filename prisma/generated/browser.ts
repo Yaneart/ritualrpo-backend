@@ -52,3 +52,18 @@ export type Review = Prisma.ReviewModel
  * 
  */
 export type Faq = Prisma.FaqModel
+/**
+ * Model CalculatorServiceType
+ * 
+ */
+export type CalculatorServiceType = Prisma.CalculatorServiceTypeModel
+/**
+ * Model CalculatorGroup
+ * 
+ */
+export type CalculatorGroup = Prisma.CalculatorGroupModel
+/**
+ * Model CalculatorOption
+ * 
+ */
+export type CalculatorOption = Prisma.CalculatorOptionModel

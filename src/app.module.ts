@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { ReviewsModule } from './reviews/reviews.module';
 import { FaqModule } from './faq/faq.module';
+import { CalculatorModule } from './calculator/calculator.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { FaqModule } from './faq/faq.module';
     AuthModule,
     ReviewsModule,
     FaqModule,
+    CalculatorModule,
   ],
   controllers: [AppController],
   providers: [AppService],

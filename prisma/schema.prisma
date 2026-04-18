@@ -93,3 +93,47 @@ model Faq {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// Калькулятор: типы услуг (шаг 1)
+model CalculatorServiceType {
+  id          String   @id @default(uuid())
+  slug        String   @unique
+  title       String
+  description String
+  basePrice   Int
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Калькулятор: группа опций (обязательная или дополнительная)
+model CalculatorGroup {
+  id        String              @id @default(uuid())
+  slug      String              @unique
+  title     String
+  type      CalculatorGroupType
+  order     Int                 @default(0)
+  options   CalculatorOption[]
+  createdAt DateTime            @default(now())
+  updatedAt DateTime            @updatedAt
+}
+
+// Калькулятор: опция внутри группы
+model CalculatorOption {
+  id          String          @id @default(uuid())
+  slug        String          @unique
+  title       String
+  description String?
+  price       Int
+  order       Int             @default(0)
+  groupId     String
+  group       CalculatorGroup @relation(fields: [groupId], references: [id], onDelete: Cascade)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+}
+
+// Калькулятор: тип группы опций (required — обязательная, extra — дополнительная)
+enum CalculatorGroupType {
+  required
+  extra
+}

@@ -57,7 +57,10 @@ export const ModelName = {
   Request: 'Request',
   Admin: 'Admin',
   Review: 'Review',
-  Faq: 'Faq'
+  Faq: 'Faq',
+  CalculatorServiceType: 'CalculatorServiceType',
+  CalculatorGroup: 'CalculatorGroup',
+  CalculatorOption: 'CalculatorOption'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -172,6 +175,48 @@ export const FaqScalarFieldEnum = {
 } as const
 
 export type FaqScalarFieldEnum = (typeof FaqScalarFieldEnum)[keyof typeof FaqScalarFieldEnum]
+
+
+export const CalculatorServiceTypeScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  description: 'description',
+  basePrice: 'basePrice',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CalculatorServiceTypeScalarFieldEnum = (typeof CalculatorServiceTypeScalarFieldEnum)[keyof typeof CalculatorServiceTypeScalarFieldEnum]
+
+
+export const CalculatorGroupScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  type: 'type',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CalculatorGroupScalarFieldEnum = (typeof CalculatorGroupScalarFieldEnum)[keyof typeof CalculatorGroupScalarFieldEnum]
+
+
+export const CalculatorOptionScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  description: 'description',
+  price: 'price',
+  order: 'order',
+  groupId: 'groupId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CalculatorOptionScalarFieldEnum = (typeof CalculatorOptionScalarFieldEnum)[keyof typeof CalculatorOptionScalarFieldEnum]
 
 
 export const SortOrder = {

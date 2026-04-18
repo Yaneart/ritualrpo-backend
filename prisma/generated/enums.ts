@@ -9,7 +9,9 @@
 * 🟢 You can import this file directly.
 */
 
+export const CalculatorGroupType = {
+  required: 'required',
+  extra: 'extra'
+} as const
 
-
-// This file is empty because there are no enums in the schema.
-export {}
+export type CalculatorGroupType = (typeof CalculatorGroupType)[keyof typeof CalculatorGroupType]

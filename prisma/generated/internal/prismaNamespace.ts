@@ -390,7 +390,10 @@ export const ModelName = {
   Request: 'Request',
   Admin: 'Admin',
   Review: 'Review',
-  Faq: 'Faq'
+  Faq: 'Faq',
+  CalculatorServiceType: 'CalculatorServiceType',
+  CalculatorGroup: 'CalculatorGroup',
+  CalculatorOption: 'CalculatorOption'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -406,7 +409,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "service" | "category" | "product" | "request" | "admin" | "review" | "faq"
+    modelProps: "service" | "category" | "product" | "request" | "admin" | "review" | "faq" | "calculatorServiceType" | "calculatorGroup" | "calculatorOption"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -928,6 +931,228 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    CalculatorServiceType: {
+      payload: Prisma.$CalculatorServiceTypePayload<ExtArgs>
+      fields: Prisma.CalculatorServiceTypeFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CalculatorServiceTypeFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CalculatorServiceTypeFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload>
+        }
+        findFirst: {
+          args: Prisma.CalculatorServiceTypeFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CalculatorServiceTypeFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload>
+        }
+        findMany: {
+          args: Prisma.CalculatorServiceTypeFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload>[]
+        }
+        create: {
+          args: Prisma.CalculatorServiceTypeCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload>
+        }
+        createMany: {
+          args: Prisma.CalculatorServiceTypeCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CalculatorServiceTypeCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload>[]
+        }
+        delete: {
+          args: Prisma.CalculatorServiceTypeDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload>
+        }
+        update: {
+          args: Prisma.CalculatorServiceTypeUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload>
+        }
+        deleteMany: {
+          args: Prisma.CalculatorServiceTypeDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CalculatorServiceTypeUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CalculatorServiceTypeUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload>[]
+        }
+        upsert: {
+          args: Prisma.CalculatorServiceTypeUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorServiceTypePayload>
+        }
+        aggregate: {
+          args: Prisma.CalculatorServiceTypeAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCalculatorServiceType>
+        }
+        groupBy: {
+          args: Prisma.CalculatorServiceTypeGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CalculatorServiceTypeGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CalculatorServiceTypeCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CalculatorServiceTypeCountAggregateOutputType> | number
+        }
+      }
+    }
+    CalculatorGroup: {
+      payload: Prisma.$CalculatorGroupPayload<ExtArgs>
+      fields: Prisma.CalculatorGroupFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CalculatorGroupFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CalculatorGroupFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload>
+        }
+        findFirst: {
+          args: Prisma.CalculatorGroupFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CalculatorGroupFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload>
+        }
+        findMany: {
+          args: Prisma.CalculatorGroupFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload>[]
+        }
+        create: {
+          args: Prisma.CalculatorGroupCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload>
+        }
+        createMany: {
+          args: Prisma.CalculatorGroupCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CalculatorGroupCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload>[]
+        }
+        delete: {
+          args: Prisma.CalculatorGroupDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload>
+        }
+        update: {
+          args: Prisma.CalculatorGroupUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload>
+        }
+        deleteMany: {
+          args: Prisma.CalculatorGroupDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CalculatorGroupUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CalculatorGroupUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload>[]
+        }
+        upsert: {
+          args: Prisma.CalculatorGroupUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorGroupPayload>
+        }
+        aggregate: {
+          args: Prisma.CalculatorGroupAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCalculatorGroup>
+        }
+        groupBy: {
+          args: Prisma.CalculatorGroupGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CalculatorGroupGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CalculatorGroupCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CalculatorGroupCountAggregateOutputType> | number
+        }
+      }
+    }
+    CalculatorOption: {
+      payload: Prisma.$CalculatorOptionPayload<ExtArgs>
+      fields: Prisma.CalculatorOptionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.CalculatorOptionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.CalculatorOptionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload>
+        }
+        findFirst: {
+          args: Prisma.CalculatorOptionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.CalculatorOptionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload>
+        }
+        findMany: {
+          args: Prisma.CalculatorOptionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload>[]
+        }
+        create: {
+          args: Prisma.CalculatorOptionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload>
+        }
+        createMany: {
+          args: Prisma.CalculatorOptionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.CalculatorOptionCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload>[]
+        }
+        delete: {
+          args: Prisma.CalculatorOptionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload>
+        }
+        update: {
+          args: Prisma.CalculatorOptionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload>
+        }
+        deleteMany: {
+          args: Prisma.CalculatorOptionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.CalculatorOptionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.CalculatorOptionUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload>[]
+        }
+        upsert: {
+          args: Prisma.CalculatorOptionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$CalculatorOptionPayload>
+        }
+        aggregate: {
+          args: Prisma.CalculatorOptionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateCalculatorOption>
+        }
+        groupBy: {
+          args: Prisma.CalculatorOptionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CalculatorOptionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.CalculatorOptionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.CalculatorOptionCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1065,6 +1290,48 @@ export const FaqScalarFieldEnum = {
 export type FaqScalarFieldEnum = (typeof FaqScalarFieldEnum)[keyof typeof FaqScalarFieldEnum]
 
 
+export const CalculatorServiceTypeScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  description: 'description',
+  basePrice: 'basePrice',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CalculatorServiceTypeScalarFieldEnum = (typeof CalculatorServiceTypeScalarFieldEnum)[keyof typeof CalculatorServiceTypeScalarFieldEnum]
+
+
+export const CalculatorGroupScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  type: 'type',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CalculatorGroupScalarFieldEnum = (typeof CalculatorGroupScalarFieldEnum)[keyof typeof CalculatorGroupScalarFieldEnum]
+
+
+export const CalculatorOptionScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  description: 'description',
+  price: 'price',
+  order: 'order',
+  groupId: 'groupId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CalculatorOptionScalarFieldEnum = (typeof CalculatorOptionScalarFieldEnum)[keyof typeof CalculatorOptionScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1141,6 +1408,20 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
  * Reference to a field of type 'DateTime[]'
  */
 export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+/**
+ * Reference to a field of type 'CalculatorGroupType'
+ */
+export type EnumCalculatorGroupTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CalculatorGroupType'>
+    
+
+
+/**
+ * Reference to a field of type 'CalculatorGroupType[]'
+ */
+export type ListEnumCalculatorGroupTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CalculatorGroupType[]'>
     
 
 
@@ -1259,6 +1540,9 @@ export type GlobalOmitConfig = {
   admin?: Prisma.AdminOmit
   review?: Prisma.ReviewOmit
   faq?: Prisma.FaqOmit
+  calculatorServiceType?: Prisma.CalculatorServiceTypeOmit
+  calculatorGroup?: Prisma.CalculatorGroupOmit
+  calculatorOption?: Prisma.CalculatorOptionOmit
 }
 
 /* Types for Logging */

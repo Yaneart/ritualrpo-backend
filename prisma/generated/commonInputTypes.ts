@@ -150,6 +150,23 @@ export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
 }
 
+export type EnumCalculatorGroupTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CalculatorGroupType | Prisma.EnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CalculatorGroupType[] | Prisma.ListEnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CalculatorGroupType[] | Prisma.ListEnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCalculatorGroupTypeFilter<$PrismaModel> | $Enums.CalculatorGroupType
+}
+
+export type EnumCalculatorGroupTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CalculatorGroupType | Prisma.EnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CalculatorGroupType[] | Prisma.ListEnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CalculatorGroupType[] | Prisma.ListEnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCalculatorGroupTypeWithAggregatesFilter<$PrismaModel> | $Enums.CalculatorGroupType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCalculatorGroupTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCalculatorGroupTypeFilter<$PrismaModel>
+}
+
 export type NestedStringFilter<$PrismaModel = never> = {
   equals?: string | Prisma.StringFieldRefInput<$PrismaModel>
   in?: string[] | Prisma.ListStringFieldRefInput<$PrismaModel>
@@ -297,6 +314,23 @@ export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedDateTimeFilter<$PrismaModel>
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
+}
+
+export type NestedEnumCalculatorGroupTypeFilter<$PrismaModel = never> = {
+  equals?: $Enums.CalculatorGroupType | Prisma.EnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CalculatorGroupType[] | Prisma.ListEnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CalculatorGroupType[] | Prisma.ListEnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCalculatorGroupTypeFilter<$PrismaModel> | $Enums.CalculatorGroupType
+}
+
+export type NestedEnumCalculatorGroupTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.CalculatorGroupType | Prisma.EnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.CalculatorGroupType[] | Prisma.ListEnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.CalculatorGroupType[] | Prisma.ListEnumCalculatorGroupTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumCalculatorGroupTypeWithAggregatesFilter<$PrismaModel> | $Enums.CalculatorGroupType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumCalculatorGroupTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumCalculatorGroupTypeFilter<$PrismaModel>
 }
 
 
