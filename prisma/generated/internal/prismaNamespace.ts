@@ -389,7 +389,8 @@ export const ModelName = {
   Product: 'Product',
   Request: 'Request',
   Admin: 'Admin',
-  Review: 'Review'
+  Review: 'Review',
+  Faq: 'Faq'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -405,7 +406,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "service" | "category" | "product" | "request" | "admin" | "review"
+    modelProps: "service" | "category" | "product" | "request" | "admin" | "review" | "faq"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -853,6 +854,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Faq: {
+      payload: Prisma.$FaqPayload<ExtArgs>
+      fields: Prisma.FaqFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.FaqFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.FaqFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload>
+        }
+        findFirst: {
+          args: Prisma.FaqFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.FaqFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload>
+        }
+        findMany: {
+          args: Prisma.FaqFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload>[]
+        }
+        create: {
+          args: Prisma.FaqCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload>
+        }
+        createMany: {
+          args: Prisma.FaqCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.FaqCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload>[]
+        }
+        delete: {
+          args: Prisma.FaqDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload>
+        }
+        update: {
+          args: Prisma.FaqUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload>
+        }
+        deleteMany: {
+          args: Prisma.FaqDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.FaqUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.FaqUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload>[]
+        }
+        upsert: {
+          args: Prisma.FaqUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$FaqPayload>
+        }
+        aggregate: {
+          args: Prisma.FaqAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateFaq>
+        }
+        groupBy: {
+          args: Prisma.FaqGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FaqGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.FaqCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.FaqCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -976,6 +1051,18 @@ export const ReviewScalarFieldEnum = {
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const FaqScalarFieldEnum = {
+  id: 'id',
+  question: 'question',
+  answer: 'answer',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type FaqScalarFieldEnum = (typeof FaqScalarFieldEnum)[keyof typeof FaqScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1171,6 +1258,7 @@ export type GlobalOmitConfig = {
   request?: Prisma.RequestOmit
   admin?: Prisma.AdminOmit
   review?: Prisma.ReviewOmit
+  faq?: Prisma.FaqOmit
 }
 
 /* Types for Logging */

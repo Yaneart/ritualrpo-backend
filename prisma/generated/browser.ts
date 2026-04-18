@@ -47,3 +47,8 @@ export type Admin = Prisma.AdminModel
  * 
  */
 export type Review = Prisma.ReviewModel
+/**
+ * Model Faq
+ * 
+ */
+export type Faq = Prisma.FaqModel

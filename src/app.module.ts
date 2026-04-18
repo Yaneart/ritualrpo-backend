@@ -9,6 +9,7 @@ import { CategoriesModule } from './categories/categories.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { ReviewsModule } from './reviews/reviews.module';
+import { FaqModule } from './faq/faq.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { ReviewsModule } from './reviews/reviews.module';
     CategoriesModule,
     AuthModule,
     ReviewsModule,
+    FaqModule,
   ],
   controllers: [AppController],
   providers: [AppService],
