@@ -572,6 +572,41 @@ async function main() {
     console.log('Команда уже есть, пропуск:', teamCount);
   }
 
+  const advantagesCount = await prisma.advantage.count();
+  if (advantagesCount === 0) {
+    await prisma.advantage.createMany({
+      data: [
+        {
+          title: 'Круглосуточно',
+          description:
+            'Мы на связи 24/7. Звоните в любое время — мы сразу приедем и поможем.',
+          order: 1,
+        },
+        {
+          title: 'Всё берём на себя',
+          description:
+            'Оформление документов, транспортировка, организация церемонии — вам не нужно ни о чём беспокоиться.',
+          order: 2,
+        },
+        {
+          title: 'Прозрачные цены',
+          description:
+            'Фиксированная стоимость без скрытых наценок. Вы знаете итоговую сумму до начала работы.',
+          order: 3,
+        },
+        {
+          title: 'Опыт и уважение',
+          description:
+            'Более 10 лет работы. Каждая церемония проводится с достоинством и вниманием к деталям.',
+          order: 4,
+        },
+      ],
+    });
+    console.log('Преимущества созданы: 4');
+  } else {
+    console.log('Преимущества уже есть, пропуск:', advantagesCount);
+  }
+
   await prisma.$disconnect();
   console.log('Seed завершён!');
 }

@@ -99,3 +99,8 @@ export type Stat = Prisma.StatModel
  * 
  */
 export type TeamMember = Prisma.TeamMemberModel
+/**
+ * Model Advantage
+ * 
+ */
+export type Advantage = Prisma.AdvantageModel

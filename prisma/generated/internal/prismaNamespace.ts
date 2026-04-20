@@ -395,7 +395,8 @@ export const ModelName = {
   CalculatorGroup: 'CalculatorGroup',
   CalculatorOption: 'CalculatorOption',
   Stat: 'Stat',
-  TeamMember: 'TeamMember'
+  TeamMember: 'TeamMember',
+  Advantage: 'Advantage'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -411,7 +412,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "service" | "category" | "product" | "request" | "admin" | "review" | "faq" | "calculatorServiceType" | "calculatorGroup" | "calculatorOption" | "stat" | "teamMember"
+    modelProps: "service" | "category" | "product" | "request" | "admin" | "review" | "faq" | "calculatorServiceType" | "calculatorGroup" | "calculatorOption" | "stat" | "teamMember" | "advantage"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1303,6 +1304,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    Advantage: {
+      payload: Prisma.$AdvantagePayload<ExtArgs>
+      fields: Prisma.AdvantageFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AdvantageFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AdvantageFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload>
+        }
+        findFirst: {
+          args: Prisma.AdvantageFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AdvantageFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload>
+        }
+        findMany: {
+          args: Prisma.AdvantageFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload>[]
+        }
+        create: {
+          args: Prisma.AdvantageCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload>
+        }
+        createMany: {
+          args: Prisma.AdvantageCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AdvantageCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload>[]
+        }
+        delete: {
+          args: Prisma.AdvantageDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload>
+        }
+        update: {
+          args: Prisma.AdvantageUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload>
+        }
+        deleteMany: {
+          args: Prisma.AdvantageDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AdvantageUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AdvantageUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload>[]
+        }
+        upsert: {
+          args: Prisma.AdvantageUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AdvantagePayload>
+        }
+        aggregate: {
+          args: Prisma.AdvantageAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdvantage>
+        }
+        groupBy: {
+          args: Prisma.AdvantageGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdvantageGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AdvantageCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdvantageCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -1505,6 +1580,18 @@ export const TeamMemberScalarFieldEnum = {
 } as const
 
 export type TeamMemberScalarFieldEnum = (typeof TeamMemberScalarFieldEnum)[keyof typeof TeamMemberScalarFieldEnum]
+
+
+export const AdvantageScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  description: 'description',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AdvantageScalarFieldEnum = (typeof AdvantageScalarFieldEnum)[keyof typeof AdvantageScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1720,6 +1807,7 @@ export type GlobalOmitConfig = {
   calculatorOption?: Prisma.CalculatorOptionOmit
   stat?: Prisma.StatOmit
   teamMember?: Prisma.TeamMemberOmit
+  advantage?: Prisma.AdvantageOmit
 }
 
 /* Types for Logging */

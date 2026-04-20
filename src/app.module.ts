@@ -13,6 +13,7 @@ import { FaqModule } from './faq/faq.module';
 import { CalculatorModule } from './calculator/calculator.module';
 import { StatsModule } from './stats/stats.module';
 import { TeamModule } from './team/team.module';
+import { AdvantagesModule } from './advantages/advantages.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { TeamModule } from './team/team.module';
     CalculatorModule,
     StatsModule,
     TeamModule,
+    AdvantagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -153,6 +153,16 @@ model TeamMember {
   updatedAt DateTime @updatedAt
 }
 
+// Преимущества компании (секция "Почему мы")
+model Advantage {
+  id          String   @id @default(uuid())
+  title       String
+  description String   @db.Text
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 // Калькулятор: тип группы опций (required — обязательная, extra — дополнительная)
 enum CalculatorGroupType {
   required
