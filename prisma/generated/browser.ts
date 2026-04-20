@@ -67,3 +67,13 @@ export type CalculatorGroup = Prisma.CalculatorGroupModel
  * 
  */
 export type CalculatorOption = Prisma.CalculatorOptionModel
+/**
+ * Model Stat
+ * 
+ */
+export type Stat = Prisma.StatModel
+/**
+ * Model TeamMember
+ * 
+ */
+export type TeamMember = Prisma.TeamMemberModel

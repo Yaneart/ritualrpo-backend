@@ -132,6 +132,27 @@ model CalculatorOption {
   updatedAt   DateTime        @updatedAt
 }
 
+// О компании: статистика (10+ лет, 24/7 и т.д.)
+model Stat {
+  id        String   @id @default(uuid())
+  value     String
+  label     String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// О компании: члены команды
+model TeamMember {
+  id        String   @id @default(uuid())
+  name      String
+  position  String
+  photo     String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 // Калькулятор: тип группы опций (required — обязательная, extra — дополнительная)
 enum CalculatorGroupType {
   required

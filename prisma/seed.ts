@@ -528,6 +528,50 @@ async function main() {
   }
   console.log('Опции калькулятора созданы:', calculatorOptions.length);
 
+  const statsCount = await prisma.stat.count();
+  if (statsCount === 0) {
+    await prisma.stat.createMany({
+      data: [
+        { value: '10+', label: 'лет опыта', order: 1 },
+        { value: '24/7', label: 'на связи', order: 2 },
+        { value: '5000+', label: 'семей доверились нам', order: 3 },
+        { value: '100%', label: 'прозрачные цены', order: 4 },
+      ],
+    });
+    console.log('Статистика создана: 4');
+  } else {
+    console.log('Статистика уже есть, пропуск:', statsCount);
+  }
+
+  const teamCount = await prisma.teamMember.count();
+  if (teamCount === 0) {
+    await prisma.teamMember.createMany({
+      data: [
+        {
+          name: 'Алексей Петров',
+          position: 'Директор',
+          photo: '/images/about/team-1.webp',
+          order: 1,
+        },
+        {
+          name: 'Мария Иванова',
+          position: 'Агент',
+          photo: '/images/about/team-1.webp',
+          order: 2,
+        },
+        {
+          name: 'Дмитрий Смирнов',
+          position: 'Агент',
+          photo: '/images/about/team-1.webp',
+          order: 3,
+        },
+      ],
+    });
+    console.log('Команда создана: 3');
+  } else {
+    console.log('Команда уже есть, пропуск:', teamCount);
+  }
+
   await prisma.$disconnect();
   console.log('Seed завершён!');
 }

@@ -11,6 +11,8 @@ import { ConfigModule } from '@nestjs/config';
 import { ReviewsModule } from './reviews/reviews.module';
 import { FaqModule } from './faq/faq.module';
 import { CalculatorModule } from './calculator/calculator.module';
+import { StatsModule } from './stats/stats.module';
+import { TeamModule } from './team/team.module';
 
 @Module({
   imports: [
@@ -26,6 +28,8 @@ import { CalculatorModule } from './calculator/calculator.module';
     ReviewsModule,
     FaqModule,
     CalculatorModule,
+    StatsModule,
+    TeamModule,
   ],
   controllers: [AppController],
   providers: [AppService],

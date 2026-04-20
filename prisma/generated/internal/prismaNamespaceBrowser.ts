@@ -60,7 +60,9 @@ export const ModelName = {
   Faq: 'Faq',
   CalculatorServiceType: 'CalculatorServiceType',
   CalculatorGroup: 'CalculatorGroup',
-  CalculatorOption: 'CalculatorOption'
+  CalculatorOption: 'CalculatorOption',
+  Stat: 'Stat',
+  TeamMember: 'TeamMember'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -217,6 +219,31 @@ export const CalculatorOptionScalarFieldEnum = {
 } as const
 
 export type CalculatorOptionScalarFieldEnum = (typeof CalculatorOptionScalarFieldEnum)[keyof typeof CalculatorOptionScalarFieldEnum]
+
+
+export const StatScalarFieldEnum = {
+  id: 'id',
+  value: 'value',
+  label: 'label',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StatScalarFieldEnum = (typeof StatScalarFieldEnum)[keyof typeof StatScalarFieldEnum]
+
+
+export const TeamMemberScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  position: 'position',
+  photo: 'photo',
+  order: 'order',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TeamMemberScalarFieldEnum = (typeof TeamMemberScalarFieldEnum)[keyof typeof TeamMemberScalarFieldEnum]
 
 
 export const SortOrder = {
