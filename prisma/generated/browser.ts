@@ -82,3 +82,8 @@ export type TeamMember = Prisma.TeamMemberModel
  * 
  */
 export type Advantage = Prisma.AdvantageModel
+/**
+ * Model SiteSetting
+ * 
+ */
+export type SiteSetting = Prisma.SiteSettingModel

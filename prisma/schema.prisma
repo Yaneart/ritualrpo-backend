@@ -163,6 +163,14 @@ model Advantage {
   updatedAt   DateTime @updatedAt
 }
 
+// Настройки сайта (телефон, email, адрес и т.д.)
+model SiteSetting {
+  id        String   @id @default(uuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
 // Калькулятор: тип группы опций (required — обязательная, extra — дополнительная)
 enum CalculatorGroupType {
   required

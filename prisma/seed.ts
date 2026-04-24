@@ -625,6 +625,22 @@ async function main() {
     console.log('Преимущества уже есть, пропуск:', advantagesCount);
   }
 
+  const settingsCount = await prisma.siteSetting.count();
+  if (settingsCount === 0) {
+    await prisma.siteSetting.createMany({
+      data: [
+        { key: 'phone', value: '+7 (812) 660-51-51' },
+        { key: 'phone_href', value: 'tel:+78126605151' },
+        { key: 'email', value: 'info@ritualrpo.ru' },
+        { key: 'address', value: 'г. Санкт-Петербург, ул. Примерная, д. 1' },
+        { key: 'hours', value: 'Круглосуточно, без выходных' },
+      ],
+    });
+    console.log('Настройки сайта созданы: 5');
+  } else {
+    console.log('Настройки уже есть, пропуск:', settingsCount);
+  }
+
   await prisma.$disconnect();
   console.log('Seed завершён!');
 }

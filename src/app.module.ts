@@ -14,6 +14,7 @@ import { CalculatorModule } from './calculator/calculator.module';
 import { StatsModule } from './stats/stats.module';
 import { TeamModule } from './team/team.module';
 import { AdvantagesModule } from './advantages/advantages.module';
+import { SettingsModule } from './settings/settings.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { AdvantagesModule } from './advantages/advantages.module';
     StatsModule,
     TeamModule,
     AdvantagesModule,
+    SettingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -63,7 +63,8 @@ export const ModelName = {
   CalculatorOption: 'CalculatorOption',
   Stat: 'Stat',
   TeamMember: 'TeamMember',
-  Advantage: 'Advantage'
+  Advantage: 'Advantage',
+  SiteSetting: 'SiteSetting'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -257,6 +258,16 @@ export const AdvantageScalarFieldEnum = {
 } as const
 
 export type AdvantageScalarFieldEnum = (typeof AdvantageScalarFieldEnum)[keyof typeof AdvantageScalarFieldEnum]
+
+
+export const SiteSettingScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  value: 'value',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SiteSettingScalarFieldEnum = (typeof SiteSettingScalarFieldEnum)[keyof typeof SiteSettingScalarFieldEnum]
 
 
 export const SortOrder = {
