@@ -1,4 +1,5 @@
 {
+  "include": ["src/**/*", "prisma.config.js"],
   "compilerOptions": {
     "module": "nodenext",
     "moduleResolution": "nodenext",

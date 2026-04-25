@@ -4,7 +4,7 @@ import * as bcrypt from 'bcrypt';
 
 async function main() {
   const adapter = new PrismaPg({
-    connectionString: 'postgresql://postgres:5429558@localhost:5432/ritualrpo',
+    connectionString: process.env.DATABASE_URL || 'postgresql://postgres:5429558@localhost:5432/ritualrpo',
   });
   const prisma = new PrismaClient({ adapter });
 
