@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { PrismaPg } from '@prisma/adapter-pg';
 import { CalculatorGroupType, PrismaClient } from './generated/client';
 import * as bcrypt from 'bcrypt';
